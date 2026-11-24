@@ -1,0 +1,33 @@
+<div>
+  <label for="enfermedad">Enfermedad:</label>
+  <input type="text" id="enfermedad" [(ngModel)]="enfermedad" placeholder="Nombre de la enfermedad">
+</div>
+
+<div>
+  <label for="causa">Causa:</label>
+  <input type="text" id="causa" [(ngModel)]="causa" placeholder="Causa de la enfermedad">
+</div>
+
+<div>
+  <label for="tratamiento">Tratamiento:</label>
+  <input type="text" id="tratamiento" [(ngModel)]="tratamiento" placeholder="Tratamiento para la enfermedad">
+</div>
+
+<div>
+  <label for="nuevoSintoma">Nuevo Síntoma:</label>
+  <input type="text" id="nuevoSintoma" [(ngModel)]="nuevoSintoma" placeholder="Agregar síntoma">
+  <button (click)="agregarSintoma()">Agregar Síntoma</button>
+</div>
+
+<div>
+  <h3>Sintomas agregados:</h3>
+  <ul>
+    <li *ngFor="let sintoma of sintomas">{{ sintoma }}</li>
+  </ul>
+</div>
+
+<button (click)="guardarEnfermedad()">Guardar Enfermedad</button>
+
+<div *ngIf="mensaje">
+  <p>{{ mensaje }}</p>
+</div>

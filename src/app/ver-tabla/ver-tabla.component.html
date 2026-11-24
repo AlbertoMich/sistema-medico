@@ -1,0 +1,48 @@
+<div class="tabla-enfermedades">
+  <h2>Lista de Enfermedades</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Síntomas</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let enfermedad of enfermedades">
+        <td>{{ enfermedad.id }}</td>
+        <td>{{ enfermedad.enfermedad }}</td>
+        <td>{{ enfermedad.sintomas }}</td>
+        <td>
+          <button (click)="editarEnfermedad(enfermedad)">Editar</button>
+          <button (click)="eliminarEnfermedad(enfermedad.id)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="enfermedadSeleccionada" class="form-edicion">
+    <h3>Editar Enfermedad</h3>
+    <form (ngSubmit)="guardarCambios()">
+      <label for="nombre">Nombre:</label>
+      <input
+        id="nombre"
+        [(ngModel)]="enfermedadSeleccionada.enfermedad"
+        name="nombre"
+        type="text"
+      />
+
+      <label for="sintomas">Síntomas:</label>
+      <input
+        id="sintomas"
+        [(ngModel)]="enfermedadSeleccionada.sintomas"
+        name="sintomas"
+        type="text"
+      />
+
+      <button type="submit">Guardar</button>
+      <button type="button" (click)="cancelarEdicion()">Cancelar</button>
+    </form>
+  </div>
+</div>

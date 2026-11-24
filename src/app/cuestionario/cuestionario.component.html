@@ -1,0 +1,23 @@
+<div *ngIf="sintomas.length > 0">
+  <form (ngSubmit)="enviarRespuestas()">
+    <div *ngFor="let sintoma of sintomas; let i = index">
+      <label>
+        Tienes {{ sintoma }}?
+        <input type="checkbox" [(ngModel)]="seleccionados[i]" name="sintoma{{ i }}">
+      </label>
+    </div>
+    <button type="submit">Enviar</button>
+  </form>
+</div>
+
+<div *ngIf="resultado">
+  <h2>Resultado del Diagnóstico</h2>
+  <p><strong>Enfermedad:</strong> {{ resultado.enfermedad }}</p>
+  <p><strong>Causa:</strong> {{ resultado.causa }}</p>
+  <p><strong>Tratamiento:</strong> {{ resultado.tratamiento }}</p>
+  <p><strong>Coincidencias:</strong> {{ resultado.coincidencias }}</p>
+</div>
+
+<div *ngIf="sintomas.length === 0 && !resultado">
+  <p>Cargando síntomas o resultado...</p>
+</div>
